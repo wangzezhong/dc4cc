@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Comic Page</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      display: flex;
+      justify-content: space-between;
+    }
+    .comic-reference-section {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .comics-section {
+      flex: 70%;
+    }
+    .reference-section {
+      flex: 30%;
+      background-color: #f2f2f2;
+      padding: 15px;
+    }
+    .comic-image {
+      width: 100%;
+    }
+    .title-item {
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .interactive-area {
+      width: 50px;
+      height: 50px;
+      background-color: red;
+      position: absolute;
+      top: 0;
+      right: 0;
+      cursor: pointer;
+    }
+    .interactive-area:hover + .comics-section .comic-reference-section:first-child .title-item,
+    .interactive-area:hover + .reference-section .comic-reference-section:first-child .title-item {
+      background-color: black;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Comic Pages and Reference Titles -->
+    <div class="comics-section">
+      <div class="comic-reference-section" id="comic1">
+        <img class="comic-image" src="https://via.placeholder.com/600x800.png?text=Page1" alt="Comic Page 1">
+        <div class="interactive-area"></div>
+      </div>
+      <div class="comic-reference-section">
+        <img class="comic-image" src="https://via.placeholder.com/600x800.png?text=Page2" alt="Comic Page 2">
+      </div>
+      <!-- Add more comic-reference-section divs here... -->
+    </div>
+
+    <!-- Reference Titles -->
+    <div class="reference-section">
+      <div class="comic-reference-section">
+        <div class="title-item">Title 1</div>
+      </div>
+      <div class="comic-reference-section">
+        <div class="title-item">Title 2</div>
+      </div>
+      <!-- Add more comic-reference-section divs here... -->
+    </div>
+  </div>
+  <script>
+    document.querySelector(".interactive-area").addEventListener("mouseover", function() {
+      document.querySelector(".reference-section .comic-reference-section:first-child .title-item").style.backgroundColor = "black";
+      document.querySelector(".reference-section .comic-reference-section:first-child .title-item").style.color = "white";
+    });
+    document.querySelector(".interactive-area").addEventListener("mouseout", function() {
+      document.querySelector(".reference-section .comic-reference-section:first-child .title-item").style.backgroundColor = "";
+      document.querySelector(".reference-section .comic-reference-section:first-child .title-item").style.color = "";
+    });
+  </script>
+</body>
+</html>
